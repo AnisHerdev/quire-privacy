@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Privacy Policy for Quire — a note organization app for college students">
+    <title>Privacy Policy — Quire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a; /* Deep navy */
+            --card-bg: #1e293b; /* Charcoal card */
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --accent: #06b6d4; /* Cyan */
+            --accent-hover: #22d3ee;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-top: 80px; /* Space for fixed header */
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .header-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .header-date {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .toc {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .toc h2 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .toc ul {
+            list-style: none;
+        }
+
+        .toc li {
+            margin-bottom: 0.75rem;
+        }
+
+        .toc a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .toc a:hover {
+            color: var(--accent-hover);
+        }
+
+        .section-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            scroll-margin-top: 100px; /* Account for fixed header */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        ul {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            body {
+                padding-top: 100px;
+            }
+
+            .section-card {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-title">Quire — Privacy Policy</div>
+        <div class="header-date">Effective Date: 31 May 2026</div>
+    </header>
+
+    <main>
+        <h1>Privacy Policy</h1>
+        <div class="subtitle">For Quire — Note Organization App for College Students</div>
+
+        <div class="toc" aria-label="Table of Contents">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#section-1">1. Introduction</a></li>
+                <li><a href="#section-2">2. Information We Collect</a></li>
+                <li><a href="#section-3">3. How We Use Your Information</a></li>
+                <li><a href="#section-4">4. Data Storage and Security</a></li>
+                <li><a href="#section-5">5. Google API Services User Data Policy Compliance</a></li>
+                <li><a href="#section-6">6. Your Rights Under India's Digital Personal Data Protection Act, 2023 (DPDP Act)</a></li>
+                <li><a href="#section-7">7. Children's Privacy</a></li>
+                <li><a href="#section-8">8. Third-Party Services</a></li>
+                <li><a href="#section-9">9. Changes to This Policy</a></li>
+                <li><a href="#section-10">10. Contact</a></li>
+            </ul>
+        </div>
+
+        <section id="section-1" class="section-card">
+            <h2>1. Introduction</h2>
+            <p>Quire is a note organization app developed by S A Herdev Anish.</p>
+            <p><strong>Effective date:</strong> 31 May 2026</p>
+            <p><strong>Package name:</strong> com.cobaltclutch.quire</p>
+            <p>Quire uses Google Sign-In for authentication and Google Drive for file storage.</p>
+            <p><strong>Contact email:</strong> <a href="mailto:quire.note@gmail.com">quire.note@gmail.com</a></p>
+        </section>
+
+        <section id="section-2" class="section-card">
+            <h2>2. Information We Collect</h2>
+            <ul>
+                <li><strong>Google Account profile data:</strong> display name, email address, profile picture URL (via Firebase Auth and Google Sign-In).</li>
+                <li><strong>Google Drive data (strictly scoped):</strong>
+                    <ul>
+                        <li><code>drive.file</code> scope: access limited to files and folders created by Quire (the "Quire" folder in user's Drive root).</li>
+                        <li><code>drive.appdata</code> scope: hidden application-specific folder for syncing <code>database.json</code> (invisible to user, contains folder structure and file metadata only).</li>
+                    </ul>
+                </li>
+                <li><strong>Search queries:</strong> search terms sent to Google Drive API to search within the Quire folder contents only.</li>
+                <li><strong>Locally cached files:</strong> PDFs and documents shared to Quire are cached on-device in a local offline directory for offline viewing.</li>
+            </ul>
+        </section>
+
+        <section id="section-3" class="section-card">
+            <h2>3. How We Use Your Information</h2>
+            <ul>
+                <li><strong>Authentication:</strong> verify user identity via Google Sign-In.</li>
+                <li><strong>File storage:</strong> store user's documents in their own Google Drive "Quire" folder.</li>
+                <li><strong>Sync:</strong> maintain app state (folder structure, file organization) across devices via <code>database.json</code> in Drive appdata.</li>
+                <li><strong>Search:</strong> search queries sent to Google Drive API to find documents within the Quire folder.</li>
+                <li><strong>Offline access:</strong> locally cache previously viewed files so they are available without internet.</li>
+                <li>We do <strong>NOT</strong> use your data for advertising, tracking, profiling, or any purpose beyond core app functionality.</li>
+            </ul>
+        </section>
+
+        <section id="section-4" class="section-card">
+            <h2>4. Data Storage and Security</h2>
+            <ul>
+                <li>Quire does <strong>NOT</strong> operate any custom backend servers, APIs, or databases.</li>
+                <li>All user data remains entirely within the user's own Google account ecosystem.</li>
+                <li>PDF files are stored in the user's Google Drive, not on any server controlled by us.</li>
+                <li>The <code>database.json</code> file is stored in Google Drive's hidden appdata folder.</li>
+                <li>Local cache is stored on-device only and is not transmitted anywhere.</li>
+                <li>No user data is ever sold, rented, transferred, or disclosed to any third party.</li>
+                <li>We do <strong>NOT</strong> use Firebase Analytics, Firebase Crashlytics, or any analytics/tracking/crash-reporting SDK.</li>
+                <li>We do <strong>NOT</strong> use any third-party advertising network, data broker, or tracking service.</li>
+            </ul>
+        </section>
+
+        <section id="section-5" class="section-card">
+            <h2>5. Google API Services User Data Policy Compliance</h2>
+            <ul>
+                <li>Quire's use of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Google API Services User Data Policy</a>, including the Limited Use requirements.</li>
+                <li>Google profile data (name, email, profile picture) is used solely for authentication and displaying the user's identity within the app.</li>
+                <li>Google Drive data is used solely for storing, organizing, and searching the user's own documents within the Quire folder.</li>
+                <li>We do not transfer Google user data to any third party except as necessary to provide the service (i.e., to Google's own Firebase and Drive APIs).</li>
+                <li>We do not use Google user data for serving advertisements.</li>
+            </ul>
+        </section>
+
+        <section id="section-6" class="section-card">
+            <h2>6. Your Rights Under India's Digital Personal Data Protection Act, 2023 (DPDP Act)</h2>
+            <ul>
+                <li><strong>Right to Access:</strong> You can access all your data anytime within the app — your files, folders, and profile information.</li>
+                <li><strong>Right to Correction:</strong> You can correct your Google profile information through your Google Account settings. Folder and file names can be edited directly within Quire.</li>
+                <li><strong>Right to Erasure:</strong> You can delete any file or folder within Quire. This permanently removes it from your Google Drive. You can also revoke Quire's access to your Google Account at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">myaccount.google.com/permissions</a>.</li>
+                <li><strong>Right to Withdraw Consent:</strong> You can disconnect your Google account from Quire at any time by signing out from the app settings, or by revoking access at your Google Account permissions page (<a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">myaccount.google.com/permissions</a>).</li>
+                <li><strong>Nomination:</strong> You may nominate any other individual to exercise your rights in the event of your death or incapacity by contacting us at <a href="mailto:quire.note@gmail.com">quire.note@gmail.com</a>.</li>
+                <li><strong>Grievance Officer:</strong> For any data protection concerns, contact our Grievance Officer: S A Herdev Anish, email: <a href="mailto:quire.note@gmail.com">quire.note@gmail.com</a>. We will respond within 30 days as required by the DPDP Act.</li>
+            </ul>
+        </section>
+
+        <section id="section-7" class="section-card">
+            <h2>7. Children's Privacy</h2>
+            <ul>
+                <li>Quire is used by high school and college students. We do not knowingly collect personal information from children under 13 without verifiable parental consent.</li>
+                <li>If you are a parent or guardian and believe your child has provided us personal information without your consent, please contact us at <a href="mailto:quire.note@gmail.com">quire.note@gmail.com</a>.</li>
+                <li>If we become aware that we have collected personal data from a child under 13 without parental consent, we will delete it promptly.</li>
+                <li>Users under 13 must have a parent or guardian create and manage the Google Account used with Quire (Google's own policy requires parental consent for under-13 Google Accounts via Family Link).</li>
+            </ul>
+        </section>
+
+        <section id="section-8" class="section-card">
+            <h2>8. Third-Party Services</h2>
+            <h3>Used by Quire:</h3>
+            <ul>
+                <li><strong>Firebase Authentication (Google)</strong> — for secure sign-in</li>
+                <li><strong>Google Drive API</strong> — for file storage and sync</li>
+                <li><strong>Google Sign-In SDK</strong> — for authentication</li>
+            </ul>
+            <p>These services have their own privacy policies:</p>
+            <ul>
+                <li><strong>Google Privacy Policy:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a></li>
+                <li><strong>Firebase Privacy:</strong> <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">https://firebase.google.com/support/privacy</a></li>
+            </ul>
+            
+            <h3>Third-party services NOT used by Quire:</h3>
+            <ul>
+                <li>No advertising networks (no AdMob, no Meta Audience Network, etc.)</li>
+                <li>No analytics platforms (no Firebase Analytics, no Mixpanel, no Amplitude, etc.)</li>
+                <li>No crash reporting (no Firebase Crashlytics, no Sentry, etc.)</li>
+                <li>No data brokers or tracking SDKs</li>
+                <li>No social media SDKs (no Facebook SDK, no Twitter SDK, etc.)</li>
+            </ul>
+        </section>
+
+        <section id="section-9" class="section-card">
+            <h2>9. Changes to This Policy</h2>
+            <ul>
+                <li>We may update this Privacy Policy from time to time.</li>
+                <li>Any changes will be posted on this page with an updated effective date.</li>
+                <li>For material changes, we will notify users through the app at next launch.</li>
+                <li>Continued use of Quire after changes constitutes acceptance of the updated policy.</li>
+            </ul>
+        </section>
+
+        <section id="section-10" class="section-card">
+            <h2>10. Contact</h2>
+            <ul>
+                <li><strong>Data Controller:</strong> S A Herdev Anish</li>
+                <li><strong>App:</strong> Quire (com.cobaltclutch.quire)</li>
+                <li><strong>Email:</strong> <a href="mailto:quire.note@gmail.com">quire.note@gmail.com</a></li>
+                <li><strong>Response time:</strong> within 30 days</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>Last Updated: 31 May 2026</p>
+        <p>Contact: <a href="mailto:quire.note@gmail.com">quire.note@gmail.com</a></p>
+        <p>&copy; 2026 S A Herdev Anish. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
