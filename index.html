@@ -594,12 +594,22 @@
                 display: flex;
             }
 
+            .nav-links a {
+                padding: 12px 24px;
+                width: 100%;
+                text-align: center;
+                /* Minimum 44px touch target height */
+            }
+
             .mobile-menu-btn {
                 display: block;
+                padding: 12px;
+                margin-right: -12px;
             }
 
             .theme-toggle {
                 margin-top: 0.5rem;
+                padding: 12px;
             }
 
             .hero h1 {
@@ -644,6 +654,12 @@
             
             .btn {
                 width: 100%;
+                padding: 1rem 1.5rem; /* Ensure >=44px touch target on mobile */
+            }
+
+            .problem-card {
+                font-size: 1rem; /* Better legibility on small screens */
+                max-width: 100%;
             }
         }
     </style>
