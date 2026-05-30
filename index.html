@@ -620,20 +620,33 @@
                 grid-template-columns: 1fr;
             }
 
-            .steps-line {
-                display: none;
-            }
-
             .steps-container {
                 flex-direction: column;
-                gap: 3rem;
+                gap: 2.5rem;
+            }
+
+            .steps-line {
+                display: block;
+                width: 2px;
+                height: 100%;
+                border-top: none;
+                border-left: 2px dashed var(--border-color);
+                top: 0;
+                left: calc(1rem + 24px);
+                right: auto;
             }
 
             .step {
                 display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
+                gap: 1.5rem;
+            }
+
+            .step-number {
+                margin: 0;
+                flex-shrink: 0;
             }
 
             .footer-content {
@@ -755,18 +768,24 @@
                     <div class="steps-line"></div>
                     <div class="step">
                         <div class="step-number">1</div>
-                        <h3>Share</h3>
-                        <p>Receive files from any app via share sheet</p>
+                        <div class="step-content">
+                            <h3>Share</h3>
+                            <p>Receive files from any app via share sheet</p>
+                        </div>
                     </div>
                     <div class="step">
                         <div class="step-number">2</div>
-                        <h3>Organize</h3>
-                        <p>Auto-tag and file into subjects</p>
+                        <div class="step-content">
+                            <h3>Organize</h3>
+                            <p>Auto-tag and file into subjects</p>
+                        </div>
                     </div>
                     <div class="step">
                         <div class="step-number">3</div>
-                        <h3>Access</h3>
-                        <p>Search online, read PDFs offline</p>
+                        <div class="step-content">
+                            <h3>Access</h3>
+                            <p>Search online, read PDFs offline</p>
+                        </div>
                     </div>
                 </div>
             </div>
