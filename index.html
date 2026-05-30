@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+    <meta name="google-site-verification" content="wbT2mSonACLs5V_fAmiBuf0V2wJfaGekapq58NKuByo" />
     <script>
         const storedTheme = localStorage.getItem('theme');
         const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -261,12 +262,11 @@
             transform: rotate(15deg);
         }
 
-        .illustration-svg {
-            width: 120px;
-            height: 120px;
-            stroke: var(--primary);
-            stroke-width: 2;
-            fill: none;
+        .hero-logo {
+            width: auto;
+            max-width: 100%;
+            max-height: 200px;
+            object-fit: contain;
             z-index: 1;
         }
 
@@ -710,12 +710,7 @@
                 <a href="privacy.html" class="btn btn-outline">Read Privacy Policy</a>
             </div>
             <div class="hero-illustration">
-                <svg class="illustration-svg" viewBox="0 0 24 24">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                    <line x1="8" y1="6" x2="16" y2="6"/>
-                    <line x1="8" y1="10" x2="16" y2="10"/>
-                </svg>
+                <img src="assets/logo.png" alt="Quire Logo" class="hero-logo">
             </div>
         </section>
 
