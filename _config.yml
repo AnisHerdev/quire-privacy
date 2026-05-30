@@ -1,0 +1,7 @@
+title: Quire
+description: Your notes, everywhere.
+exclude:
+  - README.md
+  - context.md
+  - DESIGN.md
+  - DESIGN.json
