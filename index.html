@@ -285,33 +285,71 @@
 
         /* Problem Section */
         .problem-section {
-            padding: 4rem 2rem;
+            padding: 8rem 2rem;
             max-width: 1000px;
             margin: 0 auto;
             display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 5rem;
         }
 
-        .problem-card {
-            background-color: var(--surface);
-            padding: 1.5rem;
-            border-radius: 16px;
-            box-shadow: var(--card-shadow);
+        .problem-item {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .problem-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .problem-item:nth-child(even) {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        .problem-text {
             flex: 1;
-            min-width: 250px;
-            max-width: 320px;
-            font-size: 0.875rem;
+        }
+
+        .problem-text h3 {
+            font-size: 2.2rem;
+            font-family: 'Lora', serif;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        [data-theme="dark"] .problem-text h3 {
+            color: var(--secondary);
+        }
+
+        .problem-text p {
+            font-size: 1.15rem;
             color: var(--text-muted);
-            border: 1px solid var(--border-color);
-            transition: background-color 0.3s;
-            font-weight: 500;
+            max-width: 500px;
+        }
+
+        .problem-item:nth-child(even) .problem-text p {
+            margin-left: auto;
+        }
+
+        .problem-number {
+            font-size: 5rem;
+            font-weight: 700;
+            font-family: 'Lora', serif;
+            color: var(--border-color);
+            line-height: 1;
+            flex-shrink: 0;
         }
 
         /* Features Section */
         .features-section {
-            padding: 6rem 2rem;
+            padding: 8rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -331,35 +369,85 @@
 
         .feature-card {
             background-color: var(--surface);
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             border-radius: 16px;
             box-shadow: var(--card-shadow);
             border: 1px solid var(--border-color);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.3s;
+            transition: opacity 0.4s ease;
         }
 
-        .feature-card.visible {
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(27, 67, 50, 0.12);
+        }
+        
+        [data-theme="dark"] .feature-card:hover {
+             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .feature-card:hover::before {
             opacity: 1;
-            transform: translateY(0);
         }
 
         .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: transform 0.4s ease, color 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        [data-theme="dark"] .feature-icon {
+            color: var(--secondary);
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
         }
 
         .feature-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
             color: var(--text-main);
         }
 
         .feature-card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            line-height: 1.6;
         }
+        
+        /* Global Fade Animation Classes */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
 
         /* How It Works */
         .how-it-works {
@@ -687,10 +775,19 @@
                 /* Ensure >=44px touch target on mobile */
             }
 
-            .problem-card {
-                font-size: 1rem;
-                /* Better legibility on small screens */
-                max-width: 100%;
+            .problem-item, .problem-item:nth-child(even) {
+                flex-direction: column;
+                text-align: left;
+                gap: 1.5rem;
+                align-items: flex-start;
+            }
+
+            .problem-text p {
+                margin-left: 0 !important;
+            }
+            
+            .problem-number {
+                font-size: 4rem;
             }
         }
     </style>
@@ -728,60 +825,78 @@
 
     <main>
         <section class="hero">
-            <h1>Your notes, everywhere.</h1>
-            <p>Quire is a smart filing cabinet for your academic life. Collect notes from WhatsApp, Telegram, or
+            <h1 class="fade-up">Your notes, everywhere.</h1>
+            <p class="fade-up delay-100">Quire is a smart filing cabinet for your academic life. Collect notes from WhatsApp, Telegram, or
                 anywhere — then find them instantly with full-text search. All your files, synced across devices via
                 Google Drive. Your files live entirely in your own Google account.</p>
-            <div class="cta-group">
+            <div class="cta-group fade-up delay-200">
                 <a href="#features" class="btn btn-primary">Get Started</a>
                 <a href="privacy.html" class="btn btn-outline">Read Privacy Policy</a>
             </div>
-            <div class="hero-illustration">
+            <div class="hero-illustration fade-up delay-300">
                 <img src="assets/logo.png" alt="Quire Logo" class="hero-logo">
             </div>
         </section>
 
         <section class="problem-section">
-            <div class="problem-card">Notes scattered across WhatsApp groups, Telegram channels, and email?</div>
-            <div class="problem-card">Can't find that one PDF from last semester?</div>
-            <div class="problem-card">Switching between phones and laptops, losing your files?</div>
+            <div class="problem-item fade-up">
+                <div class="problem-number">01</div>
+                <div class="problem-text">
+                    <h3>Scattered Notes</h3>
+                    <p>Notes scattered across WhatsApp groups, Telegram channels, and email? Quire brings them all into one unified inbox effortlessly.</p>
+                </div>
+            </div>
+            <div class="problem-item fade-up">
+                <div class="problem-number">02</div>
+                <div class="problem-text">
+                    <h3>Lost Files</h3>
+                    <p>Can't find that one PDF from last semester? Retrieve anything instantly with Google Drive powered full-text search.</p>
+                </div>
+            </div>
+            <div class="problem-item fade-up">
+                <div class="problem-number">03</div>
+                <div class="problem-text">
+                    <h3>Device Friction</h3>
+                    <p>Switching between phones and laptops, losing your files? Everything syncs natively across devices so your study materials are always with you.</p>
+                </div>
+            </div>
         </section>
 
         <section id="features" class="features-section">
             <h2 class="section-title">Features</h2>
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📥</div>
+                <div class="feature-card fade-up">
+                    <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-inbox"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div>
                     <h3>Zero-Friction Intake</h3>
                     <p>Share files from WhatsApp, Telegram, or any app directly into Quire via the OS share sheet. Files
                         land in your Inbox automatically.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🗂️</div>
+                <div class="feature-card fade-up delay-100">
+                    <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-tree"><path d="M20 10a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2.5a1 1 0 0 1-.8-.4l-.9-1.2A1 1 0 0 0 15 3h-2a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Z"/><path d="M20 21a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-2.9a1 1 0 0 1-.88-.55l-.42-.85a1 1 0 0 0-.92-.6H13a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Z"/><path d="M3 5v14a2 2 0 0 0 2 2h7"/><path d="M8 17h1"/><path d="M8 9h1"/></svg></div>
                     <h3>Smart Organization</h3>
                     <p>Auto-detect subjects from filenames. Organize into hierarchical folders (up to 3 levels deep).
                         Batch move files with undo support.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
+                <div class="feature-card fade-up delay-200">
+                    <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
                     <h3>Full-Text Search</h3>
                     <p>Native full-text search powered by Google Drive across all your PDFs and documents. Find notes by
                         content, not just filename.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">☁️</div>
+                <div class="feature-card fade-up">
+                    <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cloud"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div>
                     <h3>Cross-Device Sync</h3>
                     <p>Your notes sync across all your devices via Google Drive. File on your phone, read on your
                         laptop.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
+                <div class="feature-card fade-up delay-100">
+                    <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
                     <h3>Privacy by Design</h3>
                     <p>Your data stays in your Google ecosystem. Quire doesn't operate any custom backend servers. Your
                         files live entirely in your Google Drive.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📴</div>
+                <div class="feature-card fade-up delay-200">
+                    <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wifi-off"><line x1="2" x2="22" y1="2" y2="22"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M2 8.82a15 15 0 0 1 4.17-2.65"/><path d="M10.66 5c4.01-.36 8.14.9 11.34 3.76"/><path d="M16.85 11.25a10 10 0 0 1 2.22 1.68"/><path d="M5 13a10 10 0 0 1 5.24-2.76"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg></div>
                     <h3>Offline First</h3>
                     <p>Cache files locally. Read your PDFs and study materials even without an internet connection.</p>
                 </div>
@@ -790,24 +905,24 @@
 
         <section class="how-it-works">
             <div class="how-it-works-container">
-                <h2 class="section-title">How It Works</h2>
+                <h2 class="section-title fade-up">How It Works</h2>
                 <div class="steps-container">
                     <div class="steps-line"></div>
-                    <div class="step">
+                    <div class="step fade-up">
                         <div class="step-number">1</div>
                         <div class="step-content">
                             <h3>Share</h3>
                             <p>Receive files from any app via share sheet</p>
                         </div>
                     </div>
-                    <div class="step">
+                    <div class="step fade-up delay-100">
                         <div class="step-number">2</div>
                         <div class="step-content">
                             <h3>Organize</h3>
                             <p>Auto-tag and file into subjects</p>
                         </div>
                     </div>
-                    <div class="step">
+                    <div class="step fade-up delay-200">
                         <div class="step-number">3</div>
                         <div class="step-content">
                             <h3>Access</h3>
@@ -819,7 +934,7 @@
         </section>
 
         <section class="privacy-highlight">
-            <div class="privacy-card">
+            <div class="privacy-card fade-up">
                 <h2>Built for Privacy</h2>
                 <p>Quire respects your privacy. No custom backend servers, no third-party analytics, no data selling.
                     Everything runs through your own Google account — and Quire only accesses its own Drive folder.</p>
@@ -828,8 +943,8 @@
         </section>
 
         <section class="faq-section">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div class="faq-item">
+            <h2 class="section-title fade-up">Frequently Asked Questions</h2>
+            <div class="faq-item fade-up">
                 <button class="faq-question">
                     Is Quire free?
                     <svg class="faq-icon" viewBox="0 0 24 24">
@@ -840,7 +955,7 @@
                     <p><br>Free to use. No subscriptions, no ads.</p>
                 </div>
             </div>
-            <div class="faq-item">
+            <div class="faq-item fade-up delay-100">
                 <button class="faq-question">
                     Does Quire read my other Drive files?
                     <svg class="faq-icon" viewBox="0 0 24 24">
@@ -852,7 +967,7 @@
                         your other Google Drive files.</p>
                 </div>
             </div>
-            <div class="faq-item">
+            <div class="faq-item fade-up delay-200">
                 <button class="faq-question">
                     What file types are supported?
                     <svg class="faq-icon" viewBox="0 0 24 24">
@@ -864,7 +979,7 @@
                         .gslides), and more — 15+ academic formats.</p>
                 </div>
             </div>
-            <div class="faq-item">
+            <div class="faq-item fade-up delay-300">
                 <button class="faq-question">
                     What about offline access?
                     <svg class="faq-icon" viewBox="0 0 24 24">
@@ -942,7 +1057,7 @@
             });
         });
 
-        // Fade in features on scroll
+        // Fade in on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: "0px 0px -50px 0px"
@@ -957,8 +1072,8 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.feature-card').forEach(card => {
-            observer.observe(card);
+        document.querySelectorAll('.fade-up').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
