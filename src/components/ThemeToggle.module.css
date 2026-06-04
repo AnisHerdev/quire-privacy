@@ -1,0 +1,31 @@
+.toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.toggle:hover {
+  background-color: var(--border-color);
+}
+
+.toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.iconSun,
+.iconMoon {
+  display: block;
+}
+
+.iconHidden {
+  display: none;
+}

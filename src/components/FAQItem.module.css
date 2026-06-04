@@ -1,0 +1,48 @@
+.item {
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background-color: var(--surface);
+  overflow: hidden;
+  transition: background-color 0.3s;
+}
+
+.question {
+  width: 100%;
+  text-align: left;
+  padding: 1.5rem;
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+  fill: currentColor;
+}
+
+.active .icon {
+  transform: rotate(180deg);
+}
+
+.answer {
+  padding: 0 1.5rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  color: var(--text-muted);
+}
+
+.active .answer {
+  padding: 0 1.5rem 1.5rem;
+  max-height: 500px;
+}

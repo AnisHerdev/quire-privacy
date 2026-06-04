@@ -1,0 +1,261 @@
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+}
+
+.ctaGroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+.heroIllustration {
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
+  background: linear-gradient(135deg, var(--border-color) 0%, transparent 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroIllustration::before {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  opacity: 0.1;
+  top: -20px;
+  left: -20px;
+}
+
+.heroIllustration::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: var(--secondary);
+  border-radius: 16px;
+  opacity: 0.1;
+  bottom: -10px;
+  right: 40px;
+  transform: rotate(15deg);
+}
+
+.heroLogo {
+  width: auto;
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/* Problem Section */
+.problemSection {
+  padding: 8rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+/* Features Section */
+.featuresSection {
+  padding: 8rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* How It Works */
+.howItWorks {
+  padding: 6rem 2rem;
+  background-color: var(--highlight-bg);
+  transition: background-color 0.3s;
+}
+
+.howContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.stepsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  margin-top: 4rem;
+}
+
+.stepsLine {
+  position: absolute;
+  top: 24px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  border-top: 2px dashed var(--border-color);
+  z-index: 0;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 1rem;
+}
+
+.stepNumber {
+  width: 48px;
+  height: 48px;
+  background-color: var(--primary);
+  color: var(--bg-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 auto 1.5rem;
+  font-family: 'Lora', serif;
+}
+
+[data-theme="dark"] .stepNumber {
+  color: #0F100F;
+}
+
+.step h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.step p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Privacy Highlight */
+.privacyHighlight {
+  padding: 6rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.privacyCard {
+  background-color: var(--surface);
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s;
+}
+
+.privacyCard h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.privacyCard p {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+/* FAQ Section */
+.faqSection {
+  padding: 6rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .stepsContainer {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .stepsLine {
+    display: block;
+    width: 2px;
+    height: 100%;
+    border-top: none;
+    border-left: 2px dashed var(--border-color);
+    top: 0;
+    left: calc(1rem + 24px);
+    right: auto;
+  }
+
+  .step {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1.5rem;
+  }
+
+  .stepNumber {
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .ctaGroup {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+}

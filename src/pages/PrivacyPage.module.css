@@ -1,0 +1,124 @@
+.main {
+  max-width: 75ch;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 2rem;
+}
+
+.main h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.16;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.main h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.main h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.33;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.main p {
+  margin-bottom: 1rem;
+}
+
+.main ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.main li {
+  margin-bottom: 0.5rem;
+}
+
+.main code {
+  background-color: var(--highlight-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.toc {
+  background-color: var(--surface);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 3rem;
+  box-shadow: var(--card-shadow);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.toc h2 {
+  margin-bottom: 1rem;
+  border-bottom: none;
+  padding-bottom: 0;
+  font-size: 1.5rem;
+}
+
+.toc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.toc li {
+  margin-bottom: 0.75rem;
+}
+
+.toc a,
+.sectionCard a {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.toc a:hover,
+.sectionCard a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.sectionCard {
+  background-color: var(--surface);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 2rem;
+  box-shadow: var(--card-shadow);
+  scroll-margin-top: 100px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+  .main h1 {
+    font-size: 2.5rem;
+  }
+
+  .sectionCard,
+  .toc {
+    padding: 1.25rem;
+    scroll-margin-top: 80px;
+  }
+}
