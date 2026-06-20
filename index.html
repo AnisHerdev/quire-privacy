@@ -250,23 +250,46 @@
             background-color: var(--border-color);
         }
 
-        .snap-store-badge {
-            display: inline-block;
-            transition: transform 0.2s, opacity 0.2s;
+        .store-badges-container {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
             margin-top: 0.5rem;
             margin-bottom: 3.5rem;
+            flex-wrap: wrap;
         }
 
-        .snap-store-badge:hover {
+        footer .store-badges-container {
+            margin-top: 0;
+            margin-bottom: 0;
+            justify-content: flex-start;
+        }
+
+        @media (max-width: 768px) {
+            footer .store-badges-container {
+                justify-content: center;
+            }
+        }
+
+        .store-badge-item {
+            display: inline-block;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .store-badge-item:hover {
             transform: translateY(-2px);
             opacity: 0.9;
         }
 
-        .snap-btn-dark { display: none; height: 56px; }
-        .snap-btn-light { display: block; height: 56px; }
+        .snap-btn-dark, .ms-btn-dark { display: none; height: 56px; width: auto; }
+        .snap-btn-light, .ms-btn-light { display: block; height: 56px; width: auto; }
 
-        [data-theme="dark"] .snap-btn-dark { display: block; }
-        [data-theme="dark"] .snap-btn-light { display: none; }
+        [data-theme="dark"] .snap-btn-dark,
+        [data-theme="dark"] .ms-btn-dark { display: block; }
+
+        [data-theme="dark"] .snap-btn-light,
+        [data-theme="dark"] .ms-btn-light { display: none; }
 
         .hero-illustration {
             width: 100%;
@@ -882,10 +905,16 @@
                 <a href="#features" class="btn btn-primary">Get Started</a>
                 <a href="privacy.html" class="btn btn-outline">Read Privacy Policy</a>
             </div>
-            <a href="https://snapcraft.io/quire" class="snap-store-badge fade-up delay-200">
-                <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/dark/install.svg" class="snap-btn-dark" />
-                <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/light/install.svg" class="snap-btn-light" />
-            </a>
+            <div class="store-badges-container fade-up delay-200">
+                <a href="https://snapcraft.io/quire" class="store-badge-item">
+                    <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/dark/install.svg" class="snap-btn-dark" />
+                    <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/light/install.svg" class="snap-btn-light" />
+                </a>
+                <a href="https://get.microsoft.com/installer/download/9nf9rkvp4jwd?referrer=appbadge" target="_self" class="store-badge-item">
+                    <img alt="Get it from Microsoft" src="https://get.microsoft.com/images/en-us%20dark.svg" class="ms-btn-dark" />
+                    <img alt="Get it from Microsoft" src="https://get.microsoft.com/images/en-us%20light.svg" class="ms-btn-light" />
+                </a>
+            </div>
             <div class="hero-illustration fade-up delay-300">
                 <img src="assets/logo.png" alt="Quire Logo" class="hero-logo">
             </div>
@@ -1052,10 +1081,16 @@
             <div class="footer-left">
                 <span class="logo">Quire</span>
                 <p>Your notes, everywhere.</p>
-                <a href="https://snapcraft.io/quire" class="snap-store-badge" style="margin-bottom: 0;">
-                    <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/dark/install.svg" class="snap-btn-dark" />
-                    <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/light/install.svg" class="snap-btn-light" />
-                </a>
+                <div class="store-badges-container">
+                    <a href="https://snapcraft.io/quire" class="store-badge-item">
+                        <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/dark/install.svg" class="snap-btn-dark" />
+                        <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/light/install.svg" class="snap-btn-light" />
+                    </a>
+                    <a href="https://get.microsoft.com/installer/download/9nf9rkvp4jwd?referrer=appbadge" target="_self" class="store-badge-item">
+                        <img alt="Get it from Microsoft" src="https://get.microsoft.com/images/en-us%20dark.svg" class="ms-btn-dark" />
+                        <img alt="Get it from Microsoft" src="https://get.microsoft.com/images/en-us%20light.svg" class="ms-btn-light" />
+                    </a>
+                </div>
             </div>
             <div class="footer-middle">
                 <a href="privacy.html">Privacy Policy</a>
