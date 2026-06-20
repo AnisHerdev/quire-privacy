@@ -259,13 +259,38 @@
             font-size: 0.9em;
         }
 
+        /* CTA Download Section */
+        .cta-download-section {
+            text-align: center;
+            padding: 4rem 2rem 2rem 2rem;
+            margin-top: 4rem;
+            background: linear-gradient(180deg, transparent 0%, rgba(1, 45, 29, 0.03) 100%);
+            border-top: 1px solid var(--border-color);
+        }
+
+        [data-theme="dark"] .cta-download-section {
+            background: linear-gradient(180deg, transparent 0%, rgba(178, 223, 34, 0.03) 100%);
+        }
+
+        .cta-download-section h3 {
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            font-family: 'Lora', serif;
+            color: var(--text-main);
+        }
+
+        .cta-download-section .store-badges-container {
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
         /* Footer */
         footer {
             background-color: rgba(1, 45, 29, 0.05);
             border-top: 1px solid rgba(1, 45, 29, 0.1);
             padding: 4rem 2rem;
             transition: background-color 0.3s;
-            margin-top: 4rem;
+            margin-top: 0;
         }
 
         [data-theme="dark"] footer {
@@ -550,21 +575,25 @@
         </section>
     </main>
 
+    <section class="cta-download-section fade-up">
+        <h3>Ready to organize your notes?</h3>
+        <div class="store-badges-container">
+            <a href="https://get.microsoft.com/installer/download/9nf9rkvp4jwd?referrer=appbadge" target="_self" class="store-badge-item">
+                <img alt="Get it from Microsoft" src="https://get.microsoft.com/images/en-us%20dark.svg" class="ms-btn-light" />
+                <img alt="Get it from Microsoft" src="https://get.microsoft.com/images/en-us%20light.svg" class="ms-btn-dark" />
+            </a>
+            <a href="https://snapcraft.io/quire" class="store-badge-item">
+                <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/dark/install.svg" class="snap-btn-light" />
+                <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/light/install.svg" class="snap-btn-dark" />
+            </a>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-content">
             <div class="footer-left">
                 <span class="logo">Quire</span>
                 <p>Your notes, everywhere.</p>
-                <div class="store-badges-container">
-                    <a href="https://get.microsoft.com/installer/download/9nf9rkvp4jwd?referrer=appbadge" target="_self" class="store-badge-item">
-                        <img alt="Get it from Microsoft" src="https://get.microsoft.com/images/en-us%20dark.svg" class="ms-btn-light" />
-                        <img alt="Get it from Microsoft" src="https://get.microsoft.com/images/en-us%20light.svg" class="ms-btn-dark" />
-                    </a>
-                    <a href="https://snapcraft.io/quire" class="store-badge-item">
-                        <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/dark/install.svg" class="snap-btn-light" />
-                        <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/light/install.svg" class="snap-btn-dark" />
-                    </a>
-                </div>
             </div>
             <div class="footer-middle">
                 <a href="privacy.html">Privacy Policy</a>
