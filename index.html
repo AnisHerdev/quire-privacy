@@ -493,6 +493,446 @@
             line-height: 1.6;
         }
         
+        /* Auto-Tagging Showcase */
+        .featured-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3rem;
+            background-color: var(--surface);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            box-shadow: var(--card-shadow);
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s;
+        }
+        .featured-showcase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+        @media (max-width: 992px) {
+            .featured-showcase {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                gap: 2rem;
+            }
+            .featured-showcase::before {
+                width: 100%;
+                height: 6px;
+            }
+        }
+        .featured-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background-color: var(--highlight-bg);
+            color: var(--primary);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+        }
+        [data-theme="dark"] .featured-badge {
+            color: var(--secondary);
+        }
+        .featured-info h3 {
+            font-family: 'Lora', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.25rem;
+            line-height: 1.2;
+            color: var(--text-main);
+        }
+        .featured-info p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .featured-steps {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .featured-step-item {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+        .featured-step-item svg {
+            color: var(--primary);
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+        [data-theme="dark"] .featured-step-item svg {
+            color: var(--secondary);
+        }
+        
+        /* Interactive Tag Simulator */
+        .tag-simulator {
+            background-color: var(--highlight-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.03);
+            transition: background-color 0.3s;
+        }
+        .simulator-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+        }
+        .simulator-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+        .simulator-files {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .simulator-file-btn {
+            background: var(--surface);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.2s ease;
+        }
+        .simulator-file-btn:hover {
+            border-color: var(--primary);
+            background-color: var(--border-color);
+        }
+        [data-theme="dark"] .simulator-file-btn:hover {
+            border-color: var(--secondary);
+        }
+        .simulator-file-btn.active {
+            border-color: var(--primary);
+            background-color: var(--border-color);
+            font-weight: 600;
+            box-shadow: 0 0 0 2px rgba(1, 45, 29, 0.1);
+        }
+        [data-theme="dark"] .simulator-file-btn.active {
+            border-color: var(--secondary);
+            background-color: var(--surface);
+            box-shadow: 0 0 0 2px rgba(255, 213, 79, 0.2);
+        }
+        .simulator-display {
+            background: var(--surface);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            min-height: 200px;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        .scanner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(1, 45, 29, 0.03) 0%, transparent 100%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+        .scanner-line {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary);
+            box-shadow: 0 0 8px var(--primary);
+            top: 0;
+            display: none;
+            z-index: 3;
+        }
+        [data-theme="dark"] .scanner-line {
+            background: var(--secondary);
+            box-shadow: 0 0 8px var(--secondary);
+        }
+        @keyframes scan {
+            0% { top: 0; }
+            50% { top: 100%; }
+            100% { top: 0; }
+        }
+        .simulator-result {
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .simulator-result.loading {
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        .result-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .result-label {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .result-val {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+        .tag-badges {
+            display: flex;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+        }
+        .tag-badge {
+            background-color: var(--highlight-bg);
+            border: 1px solid var(--border-color);
+            padding: 0.15rem 0.45rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+        .confirm-btn {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            background-color: var(--primary);
+            color: var(--bg-color);
+            border: none;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        [data-theme="dark"] .confirm-btn {
+            background-color: var(--primary);
+            color: #0F100F;
+        }
+        .confirm-btn:hover {
+            opacity: 0.9;
+        }
+        .confirm-btn:active {
+            transform: scale(0.98);
+        }
+        .confirm-btn.success {
+            background-color: #10B981 !important;
+            color: white !important;
+        }
+        [data-theme="dark"] .confirm-btn.success {
+            background-color: #10B981 !important;
+            color: #0F100F !important;
+        }
+        
+        /* Aura Mixer Mock styles */
+        .aura-mixer-mock {
+            width: 100%;
+            background-color: var(--highlight-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            box-sizing: border-box;
+            transition: background-color 0.3s;
+        }
+        .aura-track {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+        .aura-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-main);
+            width: 65px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .aura-slider-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .aura-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 4px;
+            border-radius: 2px;
+            background: var(--border-color);
+            outline: none;
+            cursor: pointer;
+        }
+        .aura-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            transition: transform 0.1s ease;
+        }
+        [data-theme="dark"] .aura-slider::-webkit-slider-thumb {
+            background: var(--secondary);
+        }
+        .aura-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.3);
+        }
+        .aura-value {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            width: 28px;
+            text-align: right;
+        }
+        .aura-presets {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 0.5rem;
+            margin-top: 0.25rem;
+        }
+        .preset-select {
+            background: var(--surface);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 0.25rem 0.5rem;
+            font-family: inherit;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        /* Recovery Mock Dialog styles */
+        .recovery-mock-dialog {
+            width: 100%;
+            background-color: var(--highlight-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            box-sizing: border-box;
+            transition: background-color 0.3s;
+            position: relative;
+        }
+        .recovery-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .recovery-title svg {
+            color: var(--primary);
+        }
+        [data-theme="dark"] .recovery-title svg {
+            color: var(--secondary);
+        }
+        .recovery-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        .recovery-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .recovery-btn {
+            flex: 1;
+            padding: 0.4rem 0.5rem;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .recovery-btn-primary {
+            background-color: var(--primary);
+            color: var(--bg-color);
+            border: none;
+        }
+        [data-theme="dark"] .recovery-btn-primary {
+            color: #0F100F;
+        }
+        .recovery-btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+        .recovery-btn-outline:hover {
+            background-color: var(--border-color);
+        }
+        .recovery-success-message {
+            display: none;
+            font-size: 0.75rem;
+            color: #10B981;
+            font-weight: 600;
+            text-align: center;
+            padding: 0.4rem;
+        }
+        
         /* Global Fade Animation Classes */
         .fade-up {
             opacity: 0;
@@ -972,37 +1412,157 @@
 
         <section id="features" class="features-section">
             <h2 class="section-title">Features</h2>
+            
+            <!-- Featured Showcase: Auto-Tagging & Subject Detection -->
+            <div class="featured-showcase fade-up">
+                <div class="featured-info">
+                    <span class="featured-badge">Core Engine Showcase</span>
+                    <h3>Auto-Tagging &amp; Subject Detection</h3>
+                    <p>Organizing files shouldn't be your job. When you share any file into Quire, its tagging engine automatically reads the filename, extracts the subject, maps it to the correct folder, and pre-fills tags instantly.</p>
+                    <ul class="featured-steps">
+                        <li class="featured-step-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                            <span><strong>Filename Analysis:</strong> Parses patterns like <code>CS201_HW4.pdf</code> instantly.</span>
+                        </li>
+                        <li class="featured-step-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                            <span><strong>Subject Mapping:</strong> Automatically identifies <code>CS</code> and suggests the appropriate course folder.</span>
+                        </li>
+                        <li class="featured-step-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                            <span><strong>Smart Tags:</strong> Pre-fills contextual tags such as <code>Homework</code> and <code>PDF</code> for instant organization.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tag-simulator">
+                    <div class="simulator-header">
+                        <span class="simulator-title">File Intake Stream</span>
+                        <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">Select a file to import:</span>
+                    </div>
+                    <div class="simulator-files">
+                        <button class="simulator-file-btn active" data-file="cs" aria-label="Simulate importing CS201 Homework file">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #3b82f6;"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                            <span>CS201_HW4.pdf</span>
+                        </button>
+                        <button class="simulator-file-btn" data-file="lit" aria-label="Simulate importing Literature Reading file">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #ec4899;"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                            <span>LIT101_Reading.docx</span>
+                        </button>
+                        <button class="simulator-file-btn" data-file="math" aria-label="Simulate importing Math Syllabus file">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #eab308;"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                            <span>MATH302_Syllabus.pdf</span>
+                        </button>
+                    </div>
+                    <div class="simulator-display">
+                        <div class="scanner-overlay"><div class="scanner-line"></div></div>
+                        <div class="simulator-result" id="simulator-result-content">
+                            <div class="result-row">
+                                <span class="result-label">Detected Subject:</span>
+                                <span class="result-val" id="res-subject">CS (Computer Science)</span>
+                            </div>
+                            <div class="result-row">
+                                <span class="result-label">Target Folder:</span>
+                                <span class="result-val" id="res-folder">/CS201</span>
+                            </div>
+                            <div class="result-row">
+                                <span class="result-label">Generated Tags:</span>
+                                <div class="tag-badges" id="res-tags">
+                                    <span class="tag-badge">CS201</span>
+                                    <span class="tag-badge">Homework</span>
+                                    <span class="tag-badge">PDF</span>
+                                </div>
+                            </div>
+                            <button class="confirm-btn" id="simulator-confirm-btn" aria-label="Confirm smart suggestions and file note">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                                <span>Confirm &amp; File Note</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid (Balanced 3x2 Layout) -->
             <div class="features-grid">
+                <!-- Card 1: Zero-Friction Intake -->
                 <div class="feature-card fade-up">
                     <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-inbox"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></div>
                     <h3>Zero-Friction Intake</h3>
-                    <p>Share files from WhatsApp, Telegram, or any app directly into Quire via the OS share sheet. Files
-                        land in your Inbox automatically.</p>
+                    <p>Share files from WhatsApp, Telegram, or any app directly into Quire via the OS share sheet. Files land in your Inbox automatically.</p>
                 </div>
+                
+                <!-- Card 2: Aura Ambient Sound Mixer -->
                 <div class="feature-card fade-up delay-100">
-                    <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-tree"><path d="M20 10a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2.5a1 1 0 0 1-.8-.4l-.9-1.2A1 1 0 0 0 15 3h-2a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Z"/><path d="M20 21a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-2.9a1 1 0 0 1-.88-.55l-.42-.85a1 1 0 0 0-.92-.6H13a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1Z"/><path d="M3 5v14a2 2 0 0 0 2 2h7"/><path d="M8 17h1"/><path d="M8 9h1"/></svg></div>
-                    <h3>Smart Organization</h3>
-                    <p>Auto-detect subjects from filenames. Organize into hierarchical folders (up to 3 levels deep).
-                        Batch move files with undo support.</p>
+                    <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-headphones"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
+                    <h3>Aura — Ambient Mixer</h3>
+                    <p>Layer and loop background sounds to create your ideal study environment. Mix white noise, rain, and waves with individual controls.</p>
+                    
+                    <div class="aura-mixer-mock" aria-label="Mock Ambient Sound Mixer panel">
+                        <div class="aura-track">
+                            <span class="aura-label">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2.5 3.19-2.5 5.5s1 4.24 2.5 5.5M19.5 16.5c1.5 1.26 2.5 3.19 2.5 5.5s-1 4.24-2.5 5.5"/><path d="M12 2v20"/><path d="M17 5H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Z"/></svg>
+                                Rain
+                            </span>
+                            <div class="aura-slider-container">
+                                <input type="range" class="aura-slider" min="0" max="100" value="65" aria-label="Rain volume slider">
+                            </div>
+                            <span class="aura-value">65%</span>
+                        </div>
+                        <div class="aura-track">
+                            <span class="aura-label">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M14.5 10.5a3.5 3.5 0 0 0-5 0"/></svg>
+                                Waves
+                            </span>
+                            <div class="aura-slider-container">
+                                <input type="range" class="aura-slider" min="0" max="100" value="30" aria-label="Waves volume slider">
+                            </div>
+                            <span class="aura-value">30%</span>
+                        </div>
+                        <div class="aura-presets">
+                            <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Preset:</span>
+                            <select class="preset-select" aria-label="Select ambient sound preset">
+                                <option value="focus">Deep Focus</option>
+                                <option value="stormy">Rainy Cafe</option>
+                                <option value="relax">Ocean Breeze</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
+                
+                <!-- Card 3: Full-Text Search -->
                 <div class="feature-card fade-up delay-200">
                     <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
                     <h3>Full-Text Search</h3>
-                    <p>Native full-text search powered by Google Drive across all your PDFs and documents. Find notes by
-                        content, not just filename.</p>
+                    <p>Native full-text search powered by Google Drive across all your PDFs and documents. Find notes by content, not just filename.</p>
                 </div>
+                
+                <!-- Card 4: Cross-Device Sync -->
                 <div class="feature-card fade-up">
                     <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cloud"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div>
                     <h3>Cross-Device Sync</h3>
-                    <p>Your notes sync across all your devices via Google Drive. File on your phone, read on your
-                        laptop.</p>
+                    <p>Your notes sync across all your devices via Google Drive. File on your phone, read on your laptop.</p>
                 </div>
+                
+                <!-- Card 5: Recovery Mode -->
                 <div class="feature-card fade-up delay-100">
-                    <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-                    <h3>Privacy by Design</h3>
-                    <p>Your data stays in your Google ecosystem. Quire doesn't operate any custom backend servers. Your
-                        files live entirely in your Google Drive.</p>
+                    <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-life-buoy"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/><circle cx="12" cy="12" r="4"/></svg></div>
+                    <h3>Recovery Mode</h3>
+                    <p>Protecting notes on desktop reinstalls. If leftover local note files are detected on Windows, Quire prompts you to start fresh or restore your data.</p>
+                    
+                    <div class="recovery-mock-dialog" aria-label="Mock Recovery Dialog panel">
+                        <div class="recovery-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            Leftover Data Detected
+                        </div>
+                        <div class="recovery-desc">Found note database files from a previous installation. Restore config?</div>
+                        <div class="recovery-actions">
+                            <button class="recovery-btn recovery-btn-primary" id="recovery-btn-restore" aria-label="Simulate restoring note database">Keep Data</button>
+                            <button class="recovery-btn recovery-btn-outline" id="recovery-btn-fresh" aria-label="Simulate starting fresh">Start Fresh</button>
+                        </div>
+                        <div class="recovery-success-message" id="recovery-status"></div>
+                    </div>
                 </div>
+                
+                <!-- Card 6: Offline First -->
                 <div class="feature-card fade-up delay-200">
                     <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wifi-off"><line x1="2" x2="22" y1="2" y2="22"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M2 8.82a15 15 0 0 1 4.17-2.65"/><path d="M10.66 5c4.01-.36 8.14.9 11.34 3.76"/><path d="M16.85 11.25a10 10 0 0 1 2.22 1.68"/><path d="M5 13a10 10 0 0 1 5.24-2.76"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg></div>
                     <h3>Offline First</h3>
@@ -1178,6 +1738,152 @@
                     item.classList.add('active');
                 }
             });
+        });
+
+        // Auto-Tagging Simulator Logic
+        const fileBtns = document.querySelectorAll('.simulator-file-btn');
+        const resSubject = document.getElementById('res-subject');
+        const resFolder = document.getElementById('res-folder');
+        const resTags = document.getElementById('res-tags');
+        const confirmBtn = document.getElementById('simulator-confirm-btn');
+        const resultContent = document.getElementById('simulator-result-content');
+        const scannerOverlay = document.querySelector('.scanner-overlay');
+        const scannerLine = document.querySelector('.scanner-line');
+
+        const fileData = {
+            cs: {
+                subject: "CS (Computer Science)",
+                folder: "/CS201",
+                tags: ["CS201", "Homework", "PDF"]
+            },
+            lit: {
+                subject: "LIT (Literature)",
+                folder: "/LIT101",
+                tags: ["LIT101", "Reading", "DOCX"]
+            },
+            math: {
+                subject: "MATH (Mathematics)",
+                folder: "/MATH302",
+                tags: ["MATH302", "Syllabus", "PDF"]
+            }
+        };
+
+        let scanTimeout;
+
+        fileBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (btn.classList.contains('active')) return;
+
+                // Update active button styling
+                fileBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Trigger Scan Animation
+                clearTimeout(scanTimeout);
+                resultContent.classList.add('loading');
+                scannerOverlay.style.opacity = '1';
+                scannerLine.style.display = 'block';
+                scannerLine.style.animation = 'scan 1.2s ease-in-out infinite';
+
+                // Reset confirm button
+                confirmBtn.classList.remove('success');
+                confirmBtn.querySelector('span').textContent = 'Confirm & File Note';
+                confirmBtn.querySelector('svg').outerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>`;
+
+                const fileKey = btn.getAttribute('data-file');
+                const data = fileData[fileKey];
+
+                scanTimeout = setTimeout(() => {
+                    // Populate new data
+                    resSubject.textContent = data.subject;
+                    resFolder.textContent = data.folder;
+                    resTags.innerHTML = '';
+                    data.tags.forEach(tag => {
+                        const span = document.createElement('span');
+                        span.className = 'tag-badge';
+                        span.textContent = tag;
+                        resTags.appendChild(span);
+                    });
+
+                    // Terminate Scan Animation
+                    resultContent.classList.remove('loading');
+                    scannerOverlay.style.opacity = '0';
+                    setTimeout(() => {
+                        scannerLine.style.display = 'none';
+                        scannerLine.style.animation = 'none';
+                    }, 300);
+                }, 1200);
+            });
+        });
+
+        confirmBtn.addEventListener('click', () => {
+            if (confirmBtn.classList.contains('success')) return;
+
+            confirmBtn.classList.add('success');
+            confirmBtn.querySelector('span').textContent = 'Filed Successfully! Check Inbox';
+            confirmBtn.querySelector('svg').outerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>`;
+        });
+
+        // Aura Sound Mixer Logic
+        const auraSliders = document.querySelectorAll('.aura-slider');
+        const presetSelect = document.querySelector('.preset-select');
+        
+        const presetConfigs = {
+            focus: { rain: 40, waves: 20 },
+            stormy: { rain: 85, waves: 10 },
+            relax: { rain: 15, waves: 80 }
+        };
+
+        auraSliders.forEach((slider, idx) => {
+            slider.addEventListener('input', () => {
+                const track = slider.closest('.aura-track');
+                const valueLabel = track.querySelector('.aura-value');
+                valueLabel.textContent = `${slider.value}%`;
+                presetSelect.value = ''; // Clear predefined preset selection on custom adjustment
+            });
+        });
+
+        presetSelect.addEventListener('change', () => {
+            const config = presetConfigs[presetSelect.value];
+            if (!config) return;
+
+            const rainTrack = document.querySelectorAll('.aura-track')[0];
+            const rainSlider = rainTrack.querySelector('.aura-slider');
+            rainSlider.value = config.rain;
+            rainTrack.querySelector('.aura-value').textContent = `${config.rain}%`;
+
+            const wavesTrack = document.querySelectorAll('.aura-track')[1];
+            const wavesSlider = wavesTrack.querySelector('.aura-slider');
+            wavesSlider.value = config.waves;
+            wavesTrack.querySelector('.aura-value').textContent = `${config.waves}%`;
+        });
+
+        // Recovery Mode Logic
+        const keepBtn = document.getElementById('recovery-btn-restore');
+        const freshBtn = document.getElementById('recovery-btn-fresh');
+        const recoveryStatus = document.getElementById('recovery-status');
+        const recoveryActions = document.querySelector('.recovery-actions');
+
+        keepBtn.addEventListener('click', () => {
+            recoveryActions.style.display = 'none';
+            recoveryStatus.style.display = 'block';
+            recoveryStatus.style.color = '#10B981';
+            recoveryStatus.innerHTML = '🔄 Restoring notes database...';
+
+            setTimeout(() => {
+                recoveryStatus.innerHTML = '✅ Restored! Loaded notes successfully.';
+            }, 1200);
+        });
+
+        freshBtn.addEventListener('click', () => {
+            recoveryActions.style.display = 'none';
+            recoveryStatus.style.display = 'block';
+            recoveryStatus.style.color = '#10B981';
+            recoveryStatus.innerHTML = '🧹 Performing clean installation...';
+
+            setTimeout(() => {
+                recoveryStatus.innerHTML = '✅ Cleaned! Ready to start fresh.';
+            }, 1200);
         });
 
         // Fade in on scroll
