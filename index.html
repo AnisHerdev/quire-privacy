@@ -131,6 +131,12 @@
             color: var(--primary);
         }
 
+        .nav-links a.active {
+            color: var(--primary);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
         .theme-toggle {
             background: none;
             border: none;
@@ -1396,7 +1402,7 @@
             <a href="#" class="logo">Quire</a>
             <div class="nav-right">
                 <div class="nav-links">
-                    <a href="#features">Features</a>
+                    <a href="#features" class="active">Features</a>
                     <a href="privacy.html">Privacy</a>
                     <a href="terms.html">Terms</a>
                     <a href="mailto:quire.note@gmail.com">Contact</a>
