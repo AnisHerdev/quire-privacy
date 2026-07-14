@@ -1488,14 +1488,14 @@
             line-height: 1.5;
         }
 
-        .steps-container {
+        .beta-steps-container {
             display: flex;
             flex-direction: column;
             gap: 1.25rem;
             margin-bottom: 2rem;
         }
 
-        .step-card {
+        .beta-step-card {
             display: flex;
             gap: 1.25rem;
             padding: 1.5rem;
@@ -1506,11 +1506,11 @@
             position: relative;
         }
 
-        .step-card.disabled {
+        .beta-step-card.disabled {
             opacity: 0.5;
         }
 
-        .step-badge {
+        .beta-step-badge {
             width: 2.25rem;
             height: 2.25rem;
             border-radius: 50%;
@@ -1525,16 +1525,16 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        .step-card.disabled .step-badge {
+        .beta-step-card.disabled .beta-step-badge {
             background-color: var(--border-color);
             color: var(--text-muted);
         }
 
-        .step-info {
+        .beta-step-info {
             flex-grow: 1;
         }
 
-        .step-info h3 {
+        .beta-step-info h3 {
             font-size: 1.15rem;
             color: var(--text-main);
             margin-bottom: 0.5rem;
@@ -1542,14 +1542,14 @@
             font-weight: 600;
         }
 
-        .step-info p {
+        .beta-step-info p {
             font-size: 0.9rem;
             color: var(--text-muted);
             margin-bottom: 1rem;
             line-height: 1.4;
         }
 
-        .step-actions {
+        .beta-step-actions {
             display: flex;
             gap: 0.75rem;
             flex-wrap: wrap;
@@ -1675,16 +1675,16 @@
         }
 
         /* Success tick & transition */
-        .step-card.completed {
+        .beta-step-card.completed {
             border-color: #10B981;
             background-color: rgba(16, 185, 129, 0.03);
         }
         
-        [data-theme="dark"] .step-card.completed {
+        [data-theme="dark"] .beta-step-card.completed {
             background-color: rgba(16, 185, 129, 0.01);
         }
 
-        .step-card.completed .step-badge {
+        .beta-step-card.completed .beta-step-badge {
             background-color: #10B981;
             color: #ffffff;
         }
@@ -2092,14 +2092,14 @@
                 <p class="modal-subtitle">Follow these 3 simple steps to become a tester and download the app. Since Quire is in closed testing, you must join the Google Group first to gain access.</p>
             </div>
             
-            <div class="steps-container">
+            <div class="beta-steps-container">
                 <!-- Step 1 -->
-                <div class="step-card" id="step-1-card">
-                    <div class="step-badge">1</div>
-                    <div class="step-info">
+                <div class="beta-step-card" id="step-1-card">
+                    <div class="beta-step-badge">1</div>
+                    <div class="beta-step-info">
                         <h3>Join the Google Group</h3>
                         <p>Google Play requires testers to be members of a group. Join using the same Google account you use on your Android phone.</p>
-                        <div class="step-actions">
+                        <div class="beta-step-actions">
                             <a href="https://groups.google.com/g/quire-closed-testers" target="_blank" class="modal-btn primary-btn btn-click-action" data-step="1">
                                 Join Group
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
@@ -2114,12 +2114,12 @@
                 </div>
 
                 <!-- Step 2 -->
-                <div class="step-card disabled" id="step-2-card">
-                    <div class="step-badge">2</div>
-                    <div class="step-info">
+                <div class="beta-step-card disabled" id="step-2-card">
+                    <div class="beta-step-badge">2</div>
+                    <div class="beta-step-info">
                         <h3>Opt-in as a Tester</h3>
                         <p>After joining the group, register your Google Account as an official Quire tester using the web opt-in link below.</p>
-                        <div class="step-actions">
+                        <div class="beta-step-actions">
                             <a href="https://play.google.com/apps/testing/com.cobaltclutch.quire" target="_blank" class="modal-btn secondary-btn disabled btn-click-action" id="opt-in-link" data-step="2">
                                 Register as Tester
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
@@ -2129,12 +2129,12 @@
                 </div>
 
                 <!-- Step 3 -->
-                <div class="step-card disabled" id="step-3-card">
-                    <div class="step-badge">3</div>
-                    <div class="step-info">
+                <div class="beta-step-card disabled" id="step-3-card">
+                    <div class="beta-step-badge">3</div>
+                    <div class="beta-step-info">
                         <h3>Download on Google Play</h3>
                         <p>Once registered, you can download the Quire app from the Play Store on your Android device.</p>
-                        <div class="step-actions">
+                        <div class="beta-step-actions">
                             <a href="https://play.google.com/store/apps/details?id=com.cobaltclutch.quire" target="_blank" class="modal-btn secondary-btn disabled btn-click-action" id="download-link" data-step="3">
                                 Download App
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
