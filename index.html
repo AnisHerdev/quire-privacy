@@ -1392,6 +1392,311 @@
                 padding-bottom: 0.4rem;
             }
         }
+
+        /* Android Beta Onboarding Modal */
+        .beta-modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 16, 15, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 1.5rem;
+        }
+
+        .beta-modal-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .beta-modal-content {
+            background-color: var(--surface);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 580px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            padding: 3rem 2rem 2.5rem 2rem;
+            transform: scale(0.96) translateY(10px);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-color) transparent;
+        }
+
+        .beta-modal-backdrop.active .beta-modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .close-modal-btn:hover {
+            background-color: var(--highlight-bg);
+            color: var(--text-main);
+        }
+
+        .modal-header {
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .modal-eyebrow {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--secondary);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-header h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .modal-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .step-card {
+            display: flex;
+            gap: 1.25rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background-color: var(--highlight-bg);
+            transition: opacity 0.3s ease, border-color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+            position: relative;
+        }
+
+        .step-card.disabled {
+            opacity: 0.5;
+        }
+
+        .step-badge {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1rem;
+            flex-shrink: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .step-card.disabled .step-badge {
+            background-color: var(--border-color);
+            color: var(--text-muted);
+        }
+
+        .step-info {
+            flex-grow: 1;
+        }
+
+        .step-info h3 {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+
+        .step-info p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .step-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .modal-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .modal-btn.primary-btn {
+            background-color: var(--primary);
+            color: var(--bg-color);
+        }
+
+        .modal-btn.primary-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .modal-btn.secondary-btn {
+            background-color: var(--surface);
+            border-color: var(--border-color);
+            color: var(--text-main);
+        }
+
+        .modal-btn.secondary-btn:hover {
+            background-color: var(--highlight-bg);
+            transform: translateY(-1px);
+        }
+
+        .modal-btn.disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            pointer-events: none !important;
+            background-color: var(--highlight-bg);
+            border-color: var(--border-color);
+            color: var(--text-muted);
+        }
+
+        .modal-btn.text-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 0.4rem 0.8rem;
+        }
+
+        .modal-btn.text-btn:hover {
+            color: var(--text-main);
+            background-color: var(--highlight-bg);
+        }
+
+        .modal-tips-section {
+            background-color: rgba(121, 89, 0, 0.05);
+            border-left: 3px solid var(--secondary);
+            padding: 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+        }
+
+        .modal-tips-section h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .modal-tips-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .modal-tips-section li {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1rem;
+            line-height: 1.4;
+        }
+
+        .modal-tips-section li::before {
+            content: "•";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .modal-tips-section li:last-child {
+            margin-bottom: 0;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .modal-footer p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .modal-footer a {
+            color: var(--secondary);
+            font-weight: 500;
+            text-decoration: underline;
+        }
+
+        /* Success tick & transition */
+        .step-card.completed {
+            border-color: #10B981;
+            background-color: rgba(16, 185, 129, 0.03);
+        }
+        
+        [data-theme="dark"] .step-card.completed {
+            background-color: rgba(16, 185, 129, 0.01);
+        }
+
+        .step-card.completed .step-badge {
+            background-color: #10B981;
+            color: #ffffff;
+        }
+
+        .copy-btn.success-state {
+            border-color: #10B981 !important;
+            color: #10B981 !important;
+        }
+
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 
@@ -1444,6 +1749,9 @@
                 <a href="https://snapcraft.io/quire" class="store-badge-item" aria-label="Download Quire from the Snap Store">
                     <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/dark/install.svg" class="snap-btn-light" width="168" height="56" />
                     <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/light/install.svg" class="snap-btn-dark" width="168" height="56" />
+                </a>
+                <a href="#" id="play-store-badge-hero" class="store-badge-item" aria-label="Join Quire Android Closed Beta">
+                    <img alt="Get it on Google Play" src="assets/google-play-badge.svg" height="56" style="height: 56px; width: auto;" />
                 </a>
             </div>
             <div class="hero-illustration fade-up delay-300">
@@ -1747,6 +2055,9 @@
                 <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/dark/install.svg" class="snap-btn-light" width="168" height="56" />
                 <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/light/install.svg" class="snap-btn-dark" width="168" height="56" />
             </a>
+            <a href="#" id="play-store-badge-cta" class="store-badge-item" aria-label="Join Quire Android Closed Beta">
+                <img alt="Get it on Google Play" src="assets/google-play-badge.svg" height="56" style="height: 56px; width: auto;" />
+            </a>
         </div>
     </section>
 
@@ -1764,8 +2075,96 @@
             <div class="footer-right">
                 <p>Made with care for students everywhere.<br>&copy; 2026</p>
             </div>
-        </div>
     </footer>
+
+    <!-- Android Beta Tester Modal -->
+    <div id="android-beta-modal" class="beta-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="beta-modal-content">
+            <button id="close-modal-btn" class="close-modal-btn" aria-label="Close modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-header">
+                <span class="modal-eyebrow">Closed Beta Testing</span>
+                <h2 id="modal-title">Join Quire on Android</h2>
+                <p class="modal-subtitle">Follow these 3 simple steps to become a tester and download the app. Since Quire is in closed testing, you must join the Google Group first to gain access.</p>
+            </div>
+            
+            <div class="steps-container">
+                <!-- Step 1 -->
+                <div class="step-card" id="step-1-card">
+                    <div class="step-badge">1</div>
+                    <div class="step-info">
+                        <h3>Join the Google Group</h3>
+                        <p>Google Play requires testers to be members of a group. Join using the same Google account you use on your Android phone.</p>
+                        <div class="step-actions">
+                            <a href="https://groups.google.com/g/quire-closed-testers" target="_blank" class="modal-btn primary-btn btn-click-action" data-step="1">
+                                Join Group
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                            <button class="modal-btn secondary-btn copy-btn" data-copy="quire-closed-testers@googlegroups.com" aria-label="Copy Google Group Email">
+                                <span>Copy Group Email</span>
+                                <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                <svg class="check-icon hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step-card disabled" id="step-2-card">
+                    <div class="step-badge">2</div>
+                    <div class="step-info">
+                        <h3>Opt-in as a Tester</h3>
+                        <p>After joining the group, register your Google Account as an official Quire tester using the web opt-in link below.</p>
+                        <div class="step-actions">
+                            <a href="https://play.google.com/apps/testing/com.cobaltclutch.quire" target="_blank" class="modal-btn secondary-btn disabled btn-click-action" id="opt-in-link" data-step="2">
+                                Register as Tester
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step-card disabled" id="step-3-card">
+                    <div class="step-badge">3</div>
+                    <div class="step-info">
+                        <h3>Download on Google Play</h3>
+                        <p>Once registered, you can download the Quire app from the Play Store on your Android device.</p>
+                        <div class="step-actions">
+                            <a href="https://play.google.com/store/apps/details?id=com.cobaltclutch.quire" target="_blank" class="modal-btn secondary-btn disabled btn-click-action" id="download-link" data-step="3">
+                                Download App
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips for Testers Section -->
+            <div class="modal-tips-section">
+                <h4>💡 Tips for Testers</h4>
+                <ul>
+                    <li><strong>Google Drive Permission</strong>: Quire operates as an academic sanctuary, syncing notes privately to your own Google Account. Please grant the Google Drive permission when the app starts.</li>
+                    <li><strong>No 404 Errors</strong>: If you get a "404 App not available" error on the Play Store, make sure you completed <strong>Step 1</strong> and are signed into the correct Google Account in your browser.</li>
+                    <li><strong>Collect Notes Anywhere</strong>: Try sharing a PDF or note from WhatsApp or Telegram directly to Quire via the OS share sheet.</li>
+                </ul>
+            </div>
+
+            <!-- Footer / Support info -->
+            <div class="modal-footer">
+                <p>Have issues or feedback? Reach us at <a href="mailto:quire.note@gmail.com">quire.note@gmail.com</a></p>
+                <button class="modal-btn text-btn copy-btn" data-copy="quire.note@gmail.com" aria-label="Copy Support Email">
+                    <span>Copy Support Email</span>
+                    <svg class="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    <svg class="check-icon hidden" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Theme Toggle
@@ -2007,6 +2406,119 @@
 
         document.querySelectorAll('.fade-up').forEach(el => {
             observer.observe(el);
+        });
+
+        // Android Beta Tester Modal Logic
+        const betaModal = document.getElementById('android-beta-modal');
+        const openModalBtns = [
+            document.getElementById('play-store-badge-hero'),
+            document.getElementById('play-store-badge-cta')
+        ];
+        const closeModalBtn = document.getElementById('close-modal-btn');
+
+        // Open modal
+        openModalBtns.forEach(btn => {
+            if (btn) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    betaModal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                    // Focus on close button or modal container for accessibility
+                    if (closeModalBtn) closeModalBtn.focus();
+                });
+            }
+        });
+
+        // Close modal function
+        const closeModal = () => {
+            betaModal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore background scrolling
+        };
+
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', closeModal);
+        }
+
+        // Close modal on clicking backdrop
+        if (betaModal) {
+            betaModal.addEventListener('click', (e) => {
+                if (e.target === betaModal) {
+                    closeModal();
+                }
+            });
+        }
+
+        // Close modal on Escape key press
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && betaModal && betaModal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Step completion tracking and unlocking next steps
+        const stepCards = {
+            1: document.getElementById('step-1-card'),
+            2: document.getElementById('step-2-card'),
+            3: document.getElementById('step-3-card')
+        };
+        const optInLink = document.getElementById('opt-in-link');
+        const downloadLink = document.getElementById('download-link');
+
+        document.querySelectorAll('.btn-click-action').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const step = parseInt(btn.getAttribute('data-step'));
+                
+                // Mark current step card as completed
+                if (stepCards[step]) {
+                    stepCards[step].classList.add('completed');
+                }
+
+                // Unlock next steps
+                if (step === 1) {
+                    if (stepCards[2]) {
+                        stepCards[2].classList.remove('disabled');
+                        if (optInLink) {
+                            optInLink.classList.remove('disabled');
+                        }
+                    }
+                } else if (step === 2) {
+                    if (stepCards[3]) {
+                        stepCards[3].classList.remove('disabled');
+                        if (downloadLink) {
+                            downloadLink.classList.remove('disabled');
+                        }
+                    }
+                }
+            });
+        });
+
+        // Clipboard Copy Helper
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const textToCopy = btn.getAttribute('data-copy');
+                const btnTextEl = btn.querySelector('span');
+                const copyIcon = btn.querySelector('.copy-icon');
+                const checkIcon = btn.querySelector('.check-icon');
+                const originalText = btnTextEl.textContent;
+
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    // Update UI state
+                    btnTextEl.textContent = 'Copied!';
+                    if (copyIcon) copyIcon.classList.add('hidden');
+                    if (checkIcon) checkIcon.classList.remove('hidden');
+                    btn.classList.add('success-state');
+
+                    // Reset state after 2 seconds
+                    setTimeout(() => {
+                        btnTextEl.textContent = originalText;
+                        if (copyIcon) copyIcon.classList.remove('hidden');
+                        if (checkIcon) checkIcon.classList.add('hidden');
+                        btn.classList.remove('success-state');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            });
         });
     </script>
 </body>
