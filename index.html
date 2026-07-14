@@ -292,14 +292,16 @@
             opacity: 0.9;
         }
 
-        .snap-btn-dark, .ms-btn-dark { display: none; height: 56px; width: auto; }
-        .snap-btn-light, .ms-btn-light { display: block; height: 56px; width: auto; }
+        .snap-btn-dark, .ms-btn-dark, .play-btn-dark { display: none; height: 56px; width: auto; }
+        .snap-btn-light, .ms-btn-light, .play-btn-light { display: block; height: 56px; width: auto; }
 
         [data-theme="dark"] .snap-btn-dark,
-        [data-theme="dark"] .ms-btn-dark { display: block; }
+        [data-theme="dark"] .ms-btn-dark,
+        [data-theme="dark"] .play-btn-dark { display: block; }
 
         [data-theme="dark"] .snap-btn-light,
-        [data-theme="dark"] .ms-btn-light { display: none; }
+        [data-theme="dark"] .ms-btn-light,
+        [data-theme="dark"] .play-btn-light { display: none; }
 
         .hero-illustration {
             width: 100%;
@@ -1751,7 +1753,8 @@
                     <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/light/install.svg" class="snap-btn-dark" width="168" height="56" />
                 </a>
                 <a href="#" id="play-store-badge-hero" class="store-badge-item" aria-label="Join Quire Android Closed Beta">
-                    <img alt="Get it on Google Play" src="assets/google-play-badge.svg" height="56" style="height: 56px; width: auto;" />
+                    <img alt="Get it on Google Play" src="assets/google-play-badge-dark.svg" class="play-btn-light" width="168" height="56" />
+                    <img alt="Get it on Google Play" src="assets/google-play-badge-light.svg" class="play-btn-dark" width="168" height="56" />
                 </a>
             </div>
             <div class="hero-illustration fade-up delay-300">
@@ -2056,7 +2059,8 @@
                 <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/light/install.svg" class="snap-btn-dark" width="168" height="56" />
             </a>
             <a href="#" id="play-store-badge-cta" class="store-badge-item" aria-label="Join Quire Android Closed Beta">
-                <img alt="Get it on Google Play" src="assets/google-play-badge.svg" height="56" style="height: 56px; width: auto;" />
+                <img alt="Get it on Google Play" src="assets/google-play-badge-dark.svg" class="play-btn-light" width="168" height="56" />
+                <img alt="Get it on Google Play" src="assets/google-play-badge-light.svg" class="play-btn-dark" width="168" height="56" />
             </a>
         </div>
     </section>
