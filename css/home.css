@@ -17,11 +17,12 @@
         }
 
         .hero h1 {
-            font-size: 4rem;
-            line-height: 1.1;
+            font-size: 4.5rem;
+            line-height: 1.08;
+            letter-spacing: -0.02em;
             margin-top: 1.25rem;
             margin-bottom: 1.5rem;
-            max-width: 800px;
+            max-width: 820px;
             color: var(--text-main);
             position: relative;
             z-index: 2;
@@ -131,7 +132,7 @@
         /* 1. WhatsApp (Top Shoulder - Left) */
         .hf-whatsapp {
             --x: max(-360px, -26vw);
-            --y: 95px;
+            --y: 108px;
             --s: 74px;
             --rot: 6deg;
             --depth: 0.75;
@@ -143,7 +144,7 @@
         /* 2. Google Drive (Mid Flank - Left) */
         .hf-drive {
             --x: max(-550px, -39vw);
-            --y: 285px;
+            --y: 298px;
             --s: 88px;
             --rot: -7deg;
             --depth: 1.25;
@@ -155,7 +156,7 @@
         /* 3. Magic Folder (Lower Flank - Left) */
         .hf-folder {
             --x: max(-420px, -30vw);
-            --y: 520px;
+            --y: 535px;
             --s: 78px;
             --rot: 8deg;
             --depth: 0.95;
@@ -168,7 +169,7 @@
         /* 4. Telegram (Top Shoulder - Right) */
         .hf-telegram {
             --x: min(360px, 26vw);
-            --y: 95px;
+            --y: 108px;
             --s: 74px;
             --rot: -6deg;
             --depth: 0.75;
@@ -180,7 +181,7 @@
         /* 5. Instant Full-Text Search (Mid Flank - Right) */
         .hf-search {
             --x: min(550px, 39vw);
-            --y: 285px;
+            --y: 298px;
             --s: 88px;
             --rot: 7deg;
             --depth: 1.25;
@@ -192,7 +193,7 @@
         /* 6. Laptop & Phone Cross-Device Sync (Lower Flank - Right) */
         .hf-sync {
             --x: min(420px, 30vw);
-            --y: 520px;
+            --y: 535px;
             --s: 78px;
             --rot: -8deg;
             --depth: 0.95;
@@ -207,40 +208,128 @@
             .hf-folder, .hf-sync { --s: 68px; }
         }
 
-        @media (max-width: 768px) {
+        /* Responsive Shift for Narrow Screens (t3.codes dynamic mobile layout) */
+        /* When horizontal space becomes narrow (<= 820px), shift from 3L+3R to 4-TOP arch and 2-BOTTOM flanks */
+        @media (max-width: 820px) {
             .hero {
-                padding: 9.5rem 1.5rem 3.5rem;
+                padding-top: 194px;
+                padding-bottom: 36px;
+            }
+
+            .hero h1 {
+                margin-top: 20px;
+                font-size: clamp(2.85rem, 9.5vw, 3.6rem);
+                line-height: 1.08;
+                letter-spacing: -0.025em;
+            }
+
+            /* --- 4 Icons in an Arch on Top (clearly below fixed navbar with comfortable buffer) --- */
+            /* 1. WhatsApp (Outer Left) */
+            .hf-whatsapp {
+                --x: -37vw;
+                --y: 104px;
+                --s: 52px;
+                --rot: -9deg;
+                --fx: -40px;
+                --fy: -60px;
+            }
+
+            /* 2. Google Drive (Inner Left) */
+            .hf-drive {
+                --x: -12.5vw;
+                --y: 112px;
+                --s: 50px;
+                --rot: -4deg;
+                --fx: -15px;
+                --fy: -60px;
+            }
+
+            /* 3. Telegram (Inner Right) */
+            .hf-telegram {
+                --x: 12.5vw;
+                --y: 112px;
+                --s: 50px;
+                --rot: 4deg;
+                --fx: 15px;
+                --fy: -60px;
+            }
+
+            /* 4. Instant Search (Outer Right) */
+            .hf-search {
+                --x: 37vw;
+                --y: 104px;
+                --s: 52px;
+                --rot: 8deg;
+                --fx: 40px;
+                --fy: -60px;
+            }
+
+            /* --- 2 Icons on Bottom (flanking badges/links) --- */
+            /* 5. Smart Folder (Bottom Left) */
+            .hf-folder {
+                --x: -37vw;
+                --y: 555px;
+                --s: 54px;
+                --rot: -6deg;
+                --fx: -60px;
+                --fy: 60px;
+            }
+
+            /* 6. Laptop & Phone Device Sync (Bottom Right) */
+            .hf-sync {
+                --x: 37vw;
+                --y: 555px;
+                --s: 54px;
+                --rot: 7deg;
+                --fx: 60px;
+                --fy: 60px;
+            }
+        }
+
+        /* Compact Smartphone Tuning (<= 440px) */
+        @media (max-width: 440px) {
+            .hero {
+                padding-top: 186px;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.7rem, 10.5vw, 3.25rem);
             }
 
             .hf-whatsapp {
                 --x: -37vw;
-                --y: 65px;
-                --s: 48px;
+                --y: 100px;
+                --s: 46px;
             }
-            .hf-telegram {
-                --x: 37vw;
-                --y: 65px;
-                --s: 48px;
-            }
+
             .hf-drive {
-                --x: -41vw;
-                --y: 280px;
-                --s: 50px;
+                --x: -12.5vw;
+                --y: 108px;
+                --s: 46px;
             }
+
+            .hf-telegram {
+                --x: 12.5vw;
+                --y: 108px;
+                --s: 46px;
+            }
+
             .hf-search {
-                --x: 41vw;
-                --y: 280px;
-                --s: 50px;
+                --x: 37vw;
+                --y: 100px;
+                --s: 46px;
             }
+
             .hf-folder {
-                --x: -36vw;
-                --y: 535px;
-                --s: 46px;
+                --x: -37vw;
+                --y: 550px;
+                --s: 48px;
             }
+
             .hf-sync {
-                --x: 36vw;
-                --y: 535px;
-                --s: 46px;
+                --x: 37vw;
+                --y: 550px;
+                --s: 48px;
             }
         }
 
@@ -1088,15 +1177,11 @@
     }
 
     .hero h1 {
-        font-size: 3.5rem;
+        font-size: 3.85rem;
     }
 }
 
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
     .features-grid {
         grid-template-columns: 1fr;
     }
