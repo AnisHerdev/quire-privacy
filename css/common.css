@@ -443,6 +443,14 @@
 
 /* Responsive Design - Common */
 @media (max-width: 768px) {
+    nav {
+        padding: 0.6rem 1.25rem;
+    }
+
+    .logo {
+        font-size: 1.35rem;
+    }
+
     .store-badges-container {
         flex-direction: column;
         gap: 1.25rem;
@@ -496,12 +504,12 @@
 
     .mobile-menu-btn {
         display: block;
-        padding: 12px;
-        margin-right: -12px;
+        padding: 8px;
+        margin-right: -8px;
     }
 
     .theme-toggle {
-        padding: 12px;
+        padding: 8px;
     }
 
     .footer-content {
