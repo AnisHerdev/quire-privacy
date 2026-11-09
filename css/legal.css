@@ -1,0 +1,162 @@
+/* ==========================================================================
+   Quire - Legal Content Styles (Privacy Policy & Terms of Service)
+   ========================================================================== */
+
+/* Privacy Policy Content */
+            main {
+                max-width: 75ch;
+                margin: 0 auto;
+                padding: 2rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 3rem;
+                font-weight: 700;
+                line-height: 1.16;
+                margin-bottom: 1rem;
+                color: var(--primary);
+                text-align: center;
+            }
+
+            .subtitle {
+                text-align: center;
+                color: var(--text-muted);
+                margin-bottom: 3rem;
+                font-weight: 600;
+                font-size: 14px;
+            }
+
+            h2 {
+                font-size: 2rem;
+                font-weight: 600;
+                line-height: 1.25;
+                margin-bottom: 1.5rem;
+                color: var(--primary);
+                border-bottom: 1px solid var(--border-color);
+                padding-bottom: 0.5rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+                font-weight: 600;
+                line-height: 1.33;
+                margin-top: 1.5rem;
+                margin-bottom: 0.5rem;
+                color: var(--text-main);
+            }
+
+            .toc {
+                background-color: var(--surface);
+                border-radius: 16px;
+                padding: 24px;
+                margin-bottom: 3rem;
+                box-shadow: var(--card-shadow);
+                transition:
+                    background-color 0.3s ease,
+                    box-shadow 0.3s ease;
+                border: 1px solid var(--border-color);
+            }
+
+            .toc h2 {
+                margin-bottom: 1rem;
+                border-bottom: none;
+                padding-bottom: 0;
+                font-size: 1.5rem;
+            }
+
+            .toc ul {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            .toc li {
+                margin-bottom: 0.75rem;
+            }
+
+            .toc a,
+            .section-card a {
+                color: var(--secondary);
+                text-decoration: none;
+                transition: opacity 0.2s ease;
+            }
+
+            .toc a:hover,
+            .section-card a:hover {
+                opacity: 0.8;
+                text-decoration: underline;
+            }
+
+            .section-card {
+                background-color: var(--surface);
+                border-radius: 16px;
+                padding: 24px;
+                margin-bottom: 2rem;
+                box-shadow: var(--card-shadow);
+                scroll-margin-top: 100px;
+                transition:
+                    background-color 0.3s ease,
+                    box-shadow 0.3s ease;
+                border: 1px solid var(--border-color);
+                overflow-wrap: break-word;
+                word-wrap: break-word;
+            }
+
+            p {
+                margin-bottom: 1rem;
+            }
+
+            ul {
+                margin-bottom: 1rem;
+                padding-left: 1.5rem;
+            }
+
+            li {
+                margin-bottom: 0.5rem;
+            }
+
+            code {
+                background-color: var(--highlight-bg);
+                padding: 2px 6px;
+                border-radius: 4px;
+                font-family: monospace;
+                font-size: 0.9em;
+            }
+
+            .section-card .delete-btn {
+                display: inline-block;
+                background-color: var(--primary);
+                color: var(--bg-color);
+                padding: 12px 24px;
+                border-radius: 8px;
+                font-weight: 600;
+                margin-top: 1.5rem;
+                border: 1px solid var(--border-color);
+                transition:
+                    opacity 0.2s ease,
+                    transform 0.1s ease;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .section-card .delete-btn:hover {
+                opacity: 0.9;
+                transform: translateY(-1px);
+                text-decoration: none;
+            }
+
+            .section-card .delete-btn:active {
+                transform: translateY(0);
+            }
+
+/* Responsive Design - Legal Specific */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-card,
+    .toc {
+        padding: 1.25rem;
+        scroll-margin-top: 80px;
+    }
+}
