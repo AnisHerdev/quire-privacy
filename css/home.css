@@ -42,6 +42,28 @@
             z-index: 2;
         }
 
+        /* Staggered Line Rise Animation (t3.codes style) */
+        [data-rise] {
+            opacity: 0;
+            transform: translateY(24px);
+            animation: data-rise-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0ms) both;
+        }
+
+        span[data-rise] {
+            display: inline-block;
+        }
+
+        @keyframes data-rise-in {
+            0% {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Hero Floating Icons Field */
         .hero-float {
             position: absolute;
@@ -223,6 +245,11 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
+            [data-rise] {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
             .hero-float-card {
                 animation: none !important;
                 transform: rotate(var(--rot)) !important;
