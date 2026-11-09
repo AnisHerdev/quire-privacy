@@ -546,27 +546,118 @@
                 opacity: 0.9;
             }
 
-            .snap-btn-dark,
-            .ms-btn-dark {
+            .snap-btn-dark {
                 display: none;
                 height: 56px;
                 width: auto;
             }
-            .snap-btn-light,
-            .ms-btn-light {
+            .snap-btn-light {
                 display: block;
                 height: 56px;
                 width: auto;
             }
 
-            [data-theme="dark"] .snap-btn-dark,
-            [data-theme="dark"] .ms-btn-dark {
+            [data-theme="dark"] .snap-btn-dark {
                 display: block;
             }
 
-            [data-theme="dark"] .snap-btn-light,
-            [data-theme="dark"] .ms-btn-light {
+            [data-theme="dark"] .snap-btn-light {
                 display: none;
+            }
+
+            .windows-download-badge {
+                display: inline-flex;
+                align-items: center;
+                height: 56px;
+                padding: 0 16px;
+                background-color: #000000;
+                color: #ffffff;
+                border: 1px solid #a6a6a6;
+                border-radius: 7px;
+                text-decoration: none;
+                box-sizing: border-box;
+                gap: 12px;
+                cursor: pointer;
+                user-select: none;
+                transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            }
+
+            .windows-download-badge:hover {
+                transform: translateY(-2px);
+                opacity: 0.95;
+                border-color: #ffffff;
+                box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+            }
+
+            .windows-download-badge:focus-visible {
+                outline: 2px solid var(--primary);
+                outline-offset: 3px;
+            }
+
+            .windows-badge-icon {
+                flex-shrink: 0;
+                width: 22px;
+                height: 22px;
+                display: block;
+            }
+
+            .windows-badge-text {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                line-height: 1.15;
+                text-align: left;
+            }
+
+            .windows-badge-sub {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                font-size: 9.5px;
+                font-weight: 500;
+                letter-spacing: 0.4px;
+                opacity: 0.85;
+                text-transform: uppercase;
+            }
+
+            .windows-badge-title {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                font-size: 16.5px;
+                font-weight: 600;
+                letter-spacing: -0.2px;
+                white-space: nowrap;
+            }
+
+            .windows-badge-ext {
+                font-size: 11.5px;
+                font-weight: 400;
+                opacity: 0.75;
+                letter-spacing: 0;
+                margin-left: 2px;
+            }
+
+            [data-theme="dark"] .windows-download-badge {
+                background-color: #ffffff;
+                color: #000000;
+                border-color: #a6a6a6;
+            }
+
+            [data-theme="dark"] .windows-download-badge:hover {
+                border-color: #000000;
+                box-shadow: 0 4px 14px rgba(255, 255, 255, 0.2);
+            }
+
+            [data-theme="dark"] .windows-download-badge:focus-visible {
+                outline: 2px solid var(--secondary);
+                outline-offset: 3px;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .windows-download-badge {
+                    transition: none;
+                }
+                .windows-download-badge:hover {
+                    transform: none;
+                }
             }
         </style>
     </head>
@@ -1079,23 +1170,16 @@
                 <a
                     href="https://github.com/AnisHerdev/quire-releases/releases/latest/download/Quire-Setup.exe"
                     target="_self"
-                    class="store-badge-item"
-                    aria-label="Download Quire for Windows"
+                    class="store-badge-item windows-download-badge"
+                    aria-label="Download Quire for Windows (.exe)"
                 >
-                    <img
-                        alt="Get it from Microsoft"
-                        src="https://get.microsoft.com/images/en-us%20dark.svg"
-                        class="ms-btn-light"
-                        width="168"
-                        height="56"
-                    />
-                    <img
-                        alt="Get it from Microsoft"
-                        src="https://get.microsoft.com/images/en-us%20light.svg"
-                        class="ms-btn-dark"
-                        width="168"
-                        height="56"
-                    />
+                    <svg class="windows-badge-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M0 3.449L9.75 2.1v9.451H0V3.449zm10.949-1.947L24 0v11.4H10.949V1.502zM0 12.6h9.75v9.451L0 20.699V12.6zm10.949 0H24V24l-12.901-1.799V12.6z"/>
+                    </svg>
+                    <div class="windows-badge-text">
+                        <span class="windows-badge-sub">Download for</span>
+                        <span class="windows-badge-title">Windows <span class="windows-badge-ext">(.exe)</span></span>
+                    </div>
                 </a>
                 <a
                     href="https://snapcraft.io/quire"
