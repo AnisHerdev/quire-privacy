@@ -700,23 +700,76 @@
                 localStorage.setItem("theme", newTheme);
             });
 
-            // Mobile Menu
-            const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
-            const navLinks = document.querySelector(".nav-links");
+                    // Smart Header & Accessible Mobile Menu
+        const headerEl = document.querySelector('header');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
 
-            mobileMenuBtn.addEventListener("click", () => {
-                navLinks.classList.toggle("show");
-            });
+        const updateHeaderScroll = () => {
+            if (!headerEl) return;
+            if (window.scrollY > 12 || (navLinks && navLinks.classList.contains('show'))) {
+                headerEl.classList.add('is-scrolled');
+            } else {
+                headerEl.classList.remove('is-scrolled');
+            }
+        };
+        window.addEventListener('scroll', updateHeaderScroll, { passive: true });
+        updateHeaderScroll();
 
-            // Close mobile menu when a link is clicked
-            const navLinkElements = document.querySelectorAll(".nav-links a");
-            navLinkElements.forEach((link) => {
-                link.addEventListener("click", () => {
-                    if (window.innerWidth <= 768) {
-                        navLinks.classList.remove("show");
-                    }
-                });
+        const closeMobileMenu = () => {
+            if (navLinks && navLinks.classList.contains('show')) {
+                navLinks.classList.remove('show');
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.classList.remove('active');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                }
+                updateHeaderScroll();
+            }
+        };
+
+        const toggleMobileMenu = () => {
+            if (!navLinks) return;
+            const isOpen = navLinks.classList.toggle('show');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.classList.toggle('active', isOpen);
+                mobileMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            }
+            updateHeaderScroll();
+        };
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMobileMenu();
             });
+        }
+
+        // Click outside dismissal
+        document.addEventListener('click', (e) => {
+            if (navLinks && navLinks.classList.contains('show')) {
+                if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    closeMobileMenu();
+                }
+            }
+        });
+
+        // Escape key dismissal
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks && navLinks.classList.contains('show')) {
+                closeMobileMenu();
+                if (mobileMenuBtn) mobileMenuBtn.focus();
+            }
+        });
+
+        // Close on navigation link click
+        const navLinkElements = document.querySelectorAll('.nav-links a');
+        navLinkElements.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    closeMobileMenu();
+                }
+            });
+        });
 
             // Android Beta Tester Modal Logic
             const betaModal = document.getElementById('android-beta-modal');
