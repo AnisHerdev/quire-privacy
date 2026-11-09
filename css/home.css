@@ -10,16 +10,21 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 8.5rem 2rem 4rem;
-            max-width: 800px;
-            margin: 0 auto;
+            padding: 11.5rem 2rem 4.5rem;
+            width: 100%;
+            position: relative;
+            overflow: visible;
         }
 
         .hero h1 {
             font-size: 4rem;
             line-height: 1.1;
+            margin-top: 1.25rem;
             margin-bottom: 1.5rem;
+            max-width: 800px;
             color: var(--text-main);
+            position: relative;
+            z-index: 2;
         }
 
         .hero p {
@@ -27,6 +32,206 @@
             color: var(--text-muted);
             margin-bottom: 2.5rem;
             max-width: 600px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero .store-badges-container,
+        .hero .hero-illustration {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Hero Floating Icons Field */
+        .hero-float {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            --px: 0px;
+            --py: 0px;
+            overflow: visible;
+        }
+
+        .hero-float-mark {
+            position: absolute;
+            left: calc(50% + var(--x));
+            top: var(--y);
+            width: var(--s);
+            height: var(--s);
+            margin-left: calc(var(--s) / -2);
+            translate: calc(var(--px) * var(--depth)) calc(var(--py) * var(--depth));
+            transition: translate var(--parallax-duration, 0.7s) cubic-bezier(0.2, 0.7, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-float-card {
+            width: 100%;
+            height: 100%;
+            background: var(--surface);
+            border: 1px solid var(--border-color);
+            border-radius: 24%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 14px 34px -12px rgba(1, 45, 29, 0.12), 0 3px 10px rgba(0, 0, 0, 0.04);
+            transform: rotate(var(--rot));
+            animation: mark-in 0.95s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d) both;
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        [data-theme="dark"] .hero-float-card {
+            box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+
+        .hero-float-card svg {
+            width: 52%;
+            height: 52%;
+            display: block;
+            object-fit: contain;
+        }
+
+        @keyframes mark-in {
+            0% {
+                opacity: 0;
+                transform: translate(var(--fx), var(--fy)) rotate(calc(var(--rot) + 26deg)) scale(0.55);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(0, 0) rotate(var(--rot)) scale(1);
+            }
+        }
+
+        /* 6 Curated Quire Floating Marks (3 Left, 3 Right) */
+        /* --- Left Side --- */
+        /* 1. WhatsApp (Top Shoulder - Left) */
+        .hf-whatsapp {
+            --x: max(-360px, -26vw);
+            --y: 95px;
+            --s: 74px;
+            --rot: 6deg;
+            --depth: 0.75;
+            --d: 0.25s;
+            --fx: -80px;
+            --fy: -90px;
+        }
+
+        /* 2. Google Drive (Mid Flank - Left) */
+        .hf-drive {
+            --x: max(-550px, -39vw);
+            --y: 285px;
+            --s: 88px;
+            --rot: -7deg;
+            --depth: 1.25;
+            --d: 0.42s;
+            --fx: -160px;
+            --fy: -20px;
+        }
+
+        /* 3. Magic Folder (Lower Flank - Left) */
+        .hf-folder {
+            --x: max(-420px, -30vw);
+            --y: 520px;
+            --s: 78px;
+            --rot: 8deg;
+            --depth: 0.95;
+            --d: 0.62s;
+            --fx: -120px;
+            --fy: 80px;
+        }
+
+        /* --- Right Side --- */
+        /* 4. Telegram (Top Shoulder - Right) */
+        .hf-telegram {
+            --x: min(360px, 26vw);
+            --y: 95px;
+            --s: 74px;
+            --rot: -6deg;
+            --depth: 0.75;
+            --d: 0.34s;
+            --fx: 80px;
+            --fy: -90px;
+        }
+
+        /* 5. Instant Full-Text Search (Mid Flank - Right) */
+        .hf-search {
+            --x: min(550px, 39vw);
+            --y: 285px;
+            --s: 88px;
+            --rot: 7deg;
+            --depth: 1.25;
+            --d: 0.50s;
+            --fx: 160px;
+            --fy: -20px;
+        }
+
+        /* 6. Laptop & Phone Cross-Device Sync (Lower Flank - Right) */
+        .hf-sync {
+            --x: min(420px, 30vw);
+            --y: 520px;
+            --s: 78px;
+            --rot: -8deg;
+            --depth: 0.95;
+            --d: 0.72s;
+            --fx: 120px;
+            --fy: 80px;
+        }
+
+        @media (max-width: 1080px) {
+            .hf-drive, .hf-search { --s: 76px; }
+            .hf-whatsapp, .hf-telegram { --s: 64px; }
+            .hf-folder, .hf-sync { --s: 68px; }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 9.5rem 1.5rem 3.5rem;
+            }
+
+            .hf-whatsapp {
+                --x: -37vw;
+                --y: 65px;
+                --s: 48px;
+            }
+            .hf-telegram {
+                --x: 37vw;
+                --y: 65px;
+                --s: 48px;
+            }
+            .hf-drive {
+                --x: -41vw;
+                --y: 280px;
+                --s: 50px;
+            }
+            .hf-search {
+                --x: 41vw;
+                --y: 280px;
+                --s: 50px;
+            }
+            .hf-folder {
+                --x: -36vw;
+                --y: 535px;
+                --s: 46px;
+            }
+            .hf-sync {
+                --x: 36vw;
+                --y: 535px;
+                --s: 46px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-float-card {
+                animation: none !important;
+                transform: rotate(var(--rot)) !important;
+                opacity: 1 !important;
+            }
+            .hero-float-mark {
+                transition: none !important;
+                translate: 0 0 !important;
+            }
         }
 
         .cta-group {
