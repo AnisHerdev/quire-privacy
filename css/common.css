@@ -473,13 +473,30 @@
             gap: 0.5rem;
         }
 
-        .footer-middle a {
+        .footer-middle a,
+        .footer-middle button {
             color: var(--text-muted);
             font-size: 0.95rem;
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+            font-family: inherit;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.2s ease;
         }
 
-        .footer-middle a:hover {
+        .footer-middle a:hover,
+        .footer-middle button:hover {
             color: var(--primary);
+        }
+
+        .footer-middle button:focus-visible,
+        .footer-middle a:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+            border-radius: 4px;
         }
 
         .footer-right {

@@ -126,7 +126,7 @@
                 <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/dark/install.svg" class="snap-btn-light" width="168" height="56" />
                 <img alt="Get it from the Snap Store" src="https://snapcraft.io/en/light/install.svg" class="snap-btn-dark" width="168" height="56" />
             </a>
-            <a href="#" id="play-store-badge-cta" class="store-badge-item" aria-label="Join Quire Android Closed Beta">
+            <a href="https://play.google.com/store/apps/details?id=com.cobaltclutch.quire&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" id="play-store-badge-cta" class="store-badge-item" aria-label="Get Quire on Google Play">
                 <img alt="Get it on Google Play" src="assets/google-play-badge-dark.svg" class="play-btn-light" width="189" height="56" />
                 <img alt="Get it on Google Play" src="assets/google-play-badge-light.svg" class="play-btn-dark" width="189" height="56" />
             </a>
@@ -142,6 +142,7 @@
             <div class="footer-middle">
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms of Service</a>
+                <button type="button" class="footer-link-btn" id="open-beta-modal-footer" aria-haspopup="dialog">Beta Program</button>
                 <a href="mailto:quire.note@gmail.com">Contact</a>
             </div>
             <div class="footer-right">
@@ -162,8 +163,8 @@
             </button>
             <div class="modal-header">
                 <span class="modal-eyebrow">Closed Beta Testing</span>
-                <h2 id="modal-title">Join Quire on Android</h2>
-                <p class="modal-subtitle">Follow these 3 simple steps to become a tester and download the app. Since Quire is in closed testing, you must join the Google Group first to gain access.</p>
+                <h2 id="modal-title">Join Quire Beta on Android</h2>
+                <p class="modal-subtitle">Follow these 3 simple steps to join our closed testing track and get early access to experimental preview builds. Looking for the stable public release? <a href="https://play.google.com/store/apps/details?id=com.cobaltclutch.quire&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: underline;">Download directly on Google Play</a>.</p>
             </div>
             
             <div class="beta-steps-container">
@@ -222,6 +223,7 @@
             <div class="modal-tips-section">
                 <h4>💡 Tips for Testers</h4>
                 <ul>
+                    <li><strong>Switching from Production?</strong> If you already have the public Quire app installed, Google Play may take some time to reflect the new beta update. To force Google Play to show the update, go to <em>Settings &rarr; Apps &rarr; Google Play Store &rarr; Storage &rarr; Clear Cache</em>, then reopen the Play Store.</li>
                     <li><strong>Google Drive Permission</strong>: Quire operates as an academic sanctuary, syncing notes privately to your own Google Account. Please grant the Google Drive permission when the app starts.</li>
                     <li><strong>No 404 Errors</strong>: If you get a "404 App not available" error on the Play Store, make sure you completed <strong>Step 1</strong> and are signed into the correct Google Account in your browser.</li>
                     <li><strong>Collect Notes Anywhere</strong>: Try sharing a PDF or note from WhatsApp or Telegram directly to Quire via the OS share sheet.</li>
@@ -326,12 +328,14 @@
 
         // Android Beta Tester Modal Logic
         const betaModal = document.getElementById('android-beta-modal');
-        const playStoreBtn = document.getElementById('play-store-badge-cta');
+        const openModalBtn = document.getElementById('open-beta-modal-footer');
         const closeModalBtn = document.getElementById('close-modal-btn');
+        let lastFocusedElement = null;
 
-        if (playStoreBtn && betaModal) {
-            playStoreBtn.addEventListener('click', (e) => {
+        if (openModalBtn && betaModal) {
+            openModalBtn.addEventListener('click', (e) => {
                 e.preventDefault();
+                lastFocusedElement = document.activeElement;
                 betaModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
                 if (closeModalBtn) closeModalBtn.focus();
@@ -342,6 +346,9 @@
             if (betaModal) {
                 betaModal.classList.remove('active');
                 document.body.style.overflow = '';
+                if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+                    lastFocusedElement.focus();
+                }
             }
         };
 
