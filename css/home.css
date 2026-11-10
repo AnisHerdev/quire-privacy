@@ -462,9 +462,13 @@
             font-size: 5rem;
             font-weight: 700;
             font-family: 'Lora', serif;
-            color: var(--border-color);
+            color: #012D1D;
             line-height: 1;
             flex-shrink: 0;
+        }
+
+        [data-theme="dark"] .problem-number {
+            color: #C9F03A;
         }
 
         /* Features Section */
